@@ -1,0 +1,3 @@
+com\snowalker\tracer\demoA\Bootstrap.class
+com\snowalker\tracer\demoA\controller\DemoController.class
+com\snowalker\tracer\demoA\Bootstrap$MyTomcatConnectorCustomizer.class

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <properties>
+        <!-- 文件输出格式%d{yyyy-MM-dd HH:mm:ss.SSS} -%-5level [%thread] %c [%L] - -->
+        <property name="PATTERN-CONSOLE">%d{yyyy-MM-dd HH:mm:ss.SSS} -%-5level [%thread] %c [%L] -%msg%n</property>
+        <property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} -%-5level [%thread] %c [%L] -%msg%n</property>
+        <property name="FILE_PATH">/log/flowapp/user</property>
+    </properties>
+
+    <!-- 先定义所有的appender -->
+    <appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <!-- 控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!-- 这个都知道是输出日志的格式 -->
+            <PatternLayout pattern="${PATTERN-CONSOLE}"/>
+        </Console>
+
+        <RollingFile name="RollingFileAll" fileName="${FILE_PATH}/console_user_${sys:hostname}.log"
+                     filePattern="${FILE_PATH}/console-${sys:hostname}-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <!-- 每天更新一次 -->
+                <TimeBasedTriggeringPolicy modulate="true" interval="1" />
+            </Policies>
+        </RollingFile>
+    </appenders>
+
+    <!--   然后定义logger，只有定义了logger并引入appender，appender才会生效 -->
+    <loggers>
+        <logger name="loggerConsole" level="DEBUG">
+            <appender-ref ref="RollingFileAll"/>
+        </logger>
+
+        <!--  root级别，打印所有日志 -->
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="RollingFileAll"/>
+        </root>
+    </loggers>
+
+
+</configuration>
