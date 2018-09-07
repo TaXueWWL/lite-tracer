@@ -1,8 +1,15 @@
 com\snowalker\tracer\config\RestTemplateWapperConfig.class
-com\snowalker\tracer\constant\Constants.class
 com\snowalker\tracer\interceptor\TraceInterceptor.class
 com\snowalker\tracer\http\RestTemplateWrapper$1.class
+com\snowalker\tracer\log\logger\CommonLogEntity.class
+com\snowalker\tracer\http\RestTemplateWrapper.class
+com\snowalker\tracer\constant\Constants.class
+com\snowalker\tracer\log\common\IdGenerator.class
+com\snowalker\tracer\log\logger\LoggerFactory.class
+com\snowalker\tracer\log\util\LogUtils.class
 com\snowalker\tracer\context\RequestContext.class
 com\snowalker\tracer\entity\TraceNode.class
+com\snowalker\tracer\log\logger\Logger.class
 com\snowalker\tracer\aop\TraceHandler.class
-com\snowalker\tracer\http\RestTemplateWrapper.class
+com\snowalker\tracer\log\Logger.class
+com\snowalker\tracer\log\LoggerFactory.class
